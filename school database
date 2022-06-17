@@ -1,0 +1,35 @@
+CREATE DATABASE school_db
+    DEFAULT CHARACTER SET = 'utf8mb4';
+    
+    CREATE TABLE students(  
+    Acess_number VARCHAR(255)  PRIMARY KEY ,
+    names VARCHAR(255) NOT NULL,
+    course INT NOT NULL
+);
+CREATE TABLE lectures(  
+    course_id INT NOT NULL PRIMARY KEY,
+    work_place VARCHAR(255),
+    names VARCHAR(255) NOT NULL,
+    phone_number INT,
+    lecture_id INT NOT NULL
+);
+CREATE TABLE courses(  
+    course_id INT NOT NULL PRIMARY KEY,
+    course_name VARCHAR(255) NOT NULL,
+    course_description VARCHAR(255) NOT NULL,
+    course_price INT NOT NULL
+);
+CREATE TABLE departments(  
+    head_of_department_id INT NOT NULL PRIMARY KEY,
+    department_name VARCHAR(255) NOT NULL,
+    department_description VARCHAR(255) NOT NULL,
+    department_price INT NOT NULL
+);
+ALTER TABLE lectures ADD FOREIGN KEY (course_id) REFERENCES courses(course_id);
+ALTER TABLE lectures ADD FOREIGN KEY (lecture_id) REFERENCES departments(head_of_department_id);
+ALTER TABLE courses ADD FOREIGN KEY (course_id) REFERENCES lectures(course_id);
+ALTER TABLE courses ADD FOREIGN KEY (course_id) REFERENCES departments(head_of_department_id);
+ALTER TABLE departments ADD FOREIGN KEY (head_of_department_id) REFERENCES lectures(lecture_id);
+ALTER TABLE departments ADD FOREIGN KEY (head_of_department_id) REFERENCES courses(course_id);
+
+ALTER TABLE students ADD FOREIGN KEY (course) REFERENCES lectures(course_id); 
