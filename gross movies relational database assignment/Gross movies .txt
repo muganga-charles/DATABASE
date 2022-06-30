@@ -1,0 +1,2 @@
+SELECT movies.title,genres.genre FROM movies LEFT JOIN genres ON movies.movies_id=ge
+nres.genre_id; --presents both the genres and the titles
