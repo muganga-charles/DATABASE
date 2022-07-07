@@ -1,0 +1,3 @@
+SELECT shows.title FROM shows JOIN ratings ON ratings.show_id=shows.id ORDER BY ratings.rating DESC LIMIT 5;
+
+SELECT DISTINCT(genres.genre) FROM genres INNER JOIN shows INNER JOIN stars INNER JOIN people ON genres.show_id=shows.id AND shows.id=stars.show_id AND stars.person_id=people.id WHERE people.name LIKE "%Robert Downey%";
