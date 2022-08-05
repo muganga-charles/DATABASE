@@ -1,3 +1,3 @@
 # DATABASE
 
-Some of the data base projects in this repository are basically 
+Some of the data base projects in this repository are basically about basic sql queries.
