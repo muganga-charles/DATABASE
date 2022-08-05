@@ -1,0 +1,45 @@
+-- Active: 1657049029113@@127.0.0.1@3306@id_databasepaper
+CREATE DATABASE id_databasepaper;
+CREATE TABLE Speciality (
+    Speciality_Code INT PRIMARY KEY, 
+    Name VARCHAR(100) NOT NULL UNIQUE
+);
+CREATE TABLE Department (
+    DeptNo INT PRIMARY KEY, 
+    Name VARCHAR(100) UNIQUE
+);
+CREATE TABLE Teacher(  
+    DID INT PRIMARY KEY,
+    FName VARCHAR(225) NOT NULL,
+    LName VARCHAR(225) NOT NULL,
+    Salary INT,
+    Speciality_Code INT,
+    DeptNo INT,
+    FOREIGN KEY (Speciality_Code) REFERENCES Speciality(Speciality_Code),
+    FOREIGN KEY (DeptNo) REFERENCES Department(DeptNo)
+);
+
+INSERT INTO department VALUES(001,'AGRIC');
+INSERT INTO department VALUES(002,'SOCIAL SCIENCE');
+INSERT INTO department VALUES(003,'HEALTH');
+INSERT INTO department VALUES(004,'IT');
+
+INSERT INTO speciality VALUES(201,'MATHEMATICS');
+INSERT INTO speciality VALUES(202,'PHYSICS');
+INSERT INTO speciality VALUES(203,'BIOLOGY');
+INSERT INTO speciality VALUES(204,'CHEMISTY');
+
+
+INSERT INTO teacher VALUES(302,'MATIN','LUZZE',3000000,204,004);
+INSERT INTO teacher VALUES(303,'PETER','MAGEZI',3900000,202,001);
+INSERT INTO teacher VALUES(304,'JOSHUA','LUTAAYA',2000000,201,004);
+
+ALTER TABLE department ADD COLUMN Section VARCHAR(100);
+
+ALTER TABLE teacher 
+CHANGE FName
+SURNAME VARCHAR(100); 
+
+UPDATE teacher 
+SET  Salary = ((15/100 * Salary)+Salary)
+WHERE DID = DID;
